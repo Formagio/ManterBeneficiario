@@ -42,11 +42,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Servico\BeneficiarioServico.cs" />
+    <Compile Include="Builder\BeneficiarioBuilder.cs" />
+    <Compile Include="Controller\BeneficiarioController.cs" />
+    <Compile Include="Exceptions\BeneficiarioException.cs" />
+    <Compile Include="Model\BeneficiarioModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Persistencia\BeneficiarioPersistencia.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
