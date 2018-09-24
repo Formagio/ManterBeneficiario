@@ -34,12 +34,12 @@ namespace ManterBeneficiario
             Console.WriteLine("Adicionando beneficiário..");
 
             var beneficiarioModel = new BeneficiarioBuilder()
+                .ComIdentificador(1)
                 .ComNomeCompleto("Carlos Magno")
                 .ComCpf("001.001.001-01")
                 .ComRg("01010101")
                 .ComEmail("email@email.com")
-                .ComNumeroTelefone("(55)51999999999")
-                .ComNumeroBeneficiario(1)
+                .ComTelefone("(55)51999999999")                
                 .ComEstaRemovido(false)
                 .Build();            
 
@@ -53,12 +53,12 @@ namespace ManterBeneficiario
             Console.WriteLine("Editando beneficiário..");
 
             var beneficiarioModel = new BeneficiarioBuilder()
+                .ComIdentificador(1)
                 .ComNomeCompleto("Carlos Magno")
                 .ComCpf("001.001.001-01")
                 .ComRg("01010101")
                 .ComEmail("email@email.com")
-                .ComNumeroTelefone("(55)51988888888")
-                .ComNumeroBeneficiario(1)
+                .ComTelefone("(55)51988888888")                
                 .ComEstaRemovido(false)
                 .Build();
 
@@ -73,7 +73,7 @@ namespace ManterBeneficiario
 
             _beneficiarioController.OnListarBeneficiariosAtivos().ForEach(beneficiario =>
             {
-                Console.WriteLine($"Número: {beneficiario.NumeroBeneficiario}, Nome completo: {beneficiario.NomeCompleto}, Ativo: {!beneficiario.EstaRemovido}");
+                Console.WriteLine($"Número: {beneficiario.Identificador}, Nome completo: {beneficiario.NomeCompleto}, Ativo: {!beneficiario.EstaRemovido}");
             });
         }
 

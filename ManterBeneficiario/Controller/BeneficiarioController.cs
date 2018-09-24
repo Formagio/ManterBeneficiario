@@ -13,14 +13,14 @@ namespace ManterBeneficiario.Controller
             _beneficiarioServico = new BeneficiarioServico();
         }
 
-        public void OnAdicionarBeneficiario(BeneficiarioModel beneficiario)
+        public void OnAdicionarBeneficiario(BeneficiarioModel beneficiarioModel)
         {
-            _beneficiarioServico.AdicionarBeneficiario(beneficiario);
+            _beneficiarioServico.AdicionarBeneficiario(beneficiarioModel);
         }
 
-        public void OnEditarBeneficiario(BeneficiarioModel beneficiario)
+        public void OnEditarBeneficiario(BeneficiarioModel beneficiarioModel)
         {
-            _beneficiarioServico.EditarBeneficiario(beneficiario);
+            _beneficiarioServico.EditarBeneficiario(beneficiarioModel);
         }
 
         public List<BeneficiarioModel> OnListarBeneficiariosAtivos()
@@ -28,9 +28,9 @@ namespace ManterBeneficiario.Controller
             return _beneficiarioServico.ListarBeneficiariosAtivos();
         }
 
-        public void OnRemoverBeneficiario(long numeroBeneficiario)
+        public void OnRemoverBeneficiario(long beneficiarioIdentificador)
         {
-            _beneficiarioServico.RemoverBeneficiario(numeroBeneficiario);
+            _beneficiarioServico.RemoverBeneficiario(beneficiarioIdentificador);
         }        
     }
 }

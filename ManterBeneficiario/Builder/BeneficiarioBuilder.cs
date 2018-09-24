@@ -4,63 +4,63 @@ namespace ManterBeneficiario.Builder
 {
     public class BeneficiarioBuilder
     {
-        private readonly BeneficiarioModel _beneficiario;
+        private readonly BeneficiarioModel _beneficiarioModel;
 
         public BeneficiarioBuilder()
         {
-            _beneficiario = new BeneficiarioModel();
+            _beneficiarioModel = new BeneficiarioModel();
         }
 
-        public BeneficiarioBuilder(BeneficiarioModel beneficiario)
+        public BeneficiarioBuilder(BeneficiarioModel beneficiarioModel)
         {
-            _beneficiario = beneficiario;
+            _beneficiarioModel = beneficiarioModel;
+        }
+
+        public BeneficiarioBuilder ComIdentificador(long identificador)
+        {
+            _beneficiarioModel.Identificador = identificador;
+            return this;
         }
 
         public BeneficiarioBuilder ComNomeCompleto(string nomeCompleto)
         {
-            _beneficiario.NomeCompleto = nomeCompleto;
+            _beneficiarioModel.NomeCompleto = nomeCompleto;
             return this;
         }
 
         public BeneficiarioBuilder ComCpf(string cpf)
         {
-            _beneficiario.Cpf = cpf;
+            _beneficiarioModel.Cpf = cpf;
             return this;
         }
 
         public BeneficiarioBuilder ComRg(string rg)
         {
-            _beneficiario.Rg = rg;
+            _beneficiarioModel.Rg = rg;
             return this;
         }
         
         public BeneficiarioBuilder ComEmail(string email)
         {
-            _beneficiario.Email = email;
+            _beneficiarioModel.Email = email;
             return this;
         }
 
-        public BeneficiarioBuilder ComNumeroTelefone(string numeroTelefone)
+        public BeneficiarioBuilder ComTelefone(string telefone)
         {
-            _beneficiario.NumeroTelefone = numeroTelefone;
-            return this;
-        }
-
-        public BeneficiarioBuilder ComNumeroBeneficiario(long numeroBeneficiario)
-        {
-            _beneficiario.NumeroBeneficiario = numeroBeneficiario;
+            _beneficiarioModel.Telefone = telefone;
             return this;
         }
 
         public BeneficiarioBuilder ComEstaRemovido(bool estaRemovido)
         {
-            _beneficiario.EstaRemovido = estaRemovido;
+            _beneficiarioModel.EstaRemovido = estaRemovido;
             return this;
         }
 
         public BeneficiarioModel Build()
         {
-            return _beneficiario;
+            return _beneficiarioModel;
         }
     }
 }

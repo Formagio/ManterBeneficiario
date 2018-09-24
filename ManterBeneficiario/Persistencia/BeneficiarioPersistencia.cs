@@ -16,16 +16,16 @@ namespace ManterBeneficiario.Persistencia
             _beneficiarioPersistenciaValidator = new BeneficiarioPersistenciaValidador(_beneficiarios);
         }
 
-        public void AdicionarBeneficiario(BeneficiarioModel beneficiario)
+        public void AdicionarBeneficiario(BeneficiarioModel beneficiarioModel)
         {
-            _beneficiarioPersistenciaValidator.ValidarAoAdicionar(beneficiario);
-            _beneficiarios.Add(beneficiario);
+            _beneficiarioPersistenciaValidator.ValidarAoAdicionar(beneficiarioModel);
+            _beneficiarios.Add(beneficiarioModel);
         }
 
-        public void EditarBeneficiario(BeneficiarioModel beneficiario)
+        public void EditarBeneficiario(BeneficiarioModel beneficiarioModel)
         {
-            _beneficiarioPersistenciaValidator.ValidarAoEditar(beneficiario);
-            _beneficiarios[LocalizarIndice(beneficiario.NumeroBeneficiario)] = beneficiario;
+            _beneficiarioPersistenciaValidator.ValidarAoEditar(beneficiarioModel);
+            _beneficiarios[LocalizarIndice(beneficiarioModel.Identificador)] = beneficiarioModel;
         }
 
         public List<BeneficiarioModel> ListarBeneficiariosAtivos()
@@ -33,16 +33,16 @@ namespace ManterBeneficiario.Persistencia
             return _beneficiarios.Where(b => !b.EstaRemovido).ToList();
         }
 
-        public void RemoverBeneficiario(long numeroBeneficiario)
+        public void RemoverBeneficiario(long beneficiarioIdentificador)
         {
-            _beneficiarioPersistenciaValidator.ValidarAoRemover(numeroBeneficiario);
-            _beneficiarios[LocalizarIndice(numeroBeneficiario)].EstaRemovido = true;
+            _beneficiarioPersistenciaValidator.ValidarAoRemover(beneficiarioIdentificador);
+            _beneficiarios[LocalizarIndice(beneficiarioIdentificador)].EstaRemovido = true;
         }
 
-        private int LocalizarIndice(long numeroBeneficiario)
+        private int LocalizarIndice(long beneficiarioIdentificador)
         {
             return _beneficiarios.FindIndex(b =>
-                b.NumeroBeneficiario == numeroBeneficiario);
+                b.Identificador == beneficiarioIdentificador);
         }
     }
 }

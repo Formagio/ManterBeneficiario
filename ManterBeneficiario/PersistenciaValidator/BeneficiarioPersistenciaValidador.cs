@@ -17,7 +17,7 @@ namespace ManterBeneficiario.PersistenciaValidator
         public void ValidarAoAdicionar(BeneficiarioModel beneficiarioModel)
         {
             if (_beneficiarios.Any(b =>
-                b.NumeroBeneficiario == beneficiarioModel.NumeroBeneficiario ||
+                b.Identificador == beneficiarioModel.Identificador ||
                 b.Cpf == beneficiarioModel.Cpf ||
                 b.Rg == beneficiarioModel.Rg))
             {
@@ -27,24 +27,24 @@ namespace ManterBeneficiario.PersistenciaValidator
 
         public void ValidarAoEditar(BeneficiarioModel beneficiarioModel)
         {
-            if (!ExisteNumeroBeneficiario(beneficiarioModel.NumeroBeneficiario))
+            if (!ExisteBeneficiarioIdentificador(beneficiarioModel.Identificador))
             {
                 throw new BeneficiarioNaoEncontradoException();
             }
         }
 
-        public void ValidarAoRemover(long numeroBeneficiario)
+        public void ValidarAoRemover(long beneficiarioIdentificador)
         {            
-            if (!ExisteNumeroBeneficiario(numeroBeneficiario))
+            if (!ExisteBeneficiarioIdentificador(beneficiarioIdentificador))
             {
                 throw new BeneficiarioNaoEncontradoException();
             }
         }
 
-        private bool ExisteNumeroBeneficiario(long numeroBeneficiario)
+        private bool ExisteBeneficiarioIdentificador(long beneficiarioIdentificador)
         {
             var beneficiarioIndex = _beneficiarios.FindIndex(b =>
-                b.NumeroBeneficiario == numeroBeneficiario);
+                b.Identificador == beneficiarioIdentificador);
 
             return beneficiarioIndex >= 0;
         }
