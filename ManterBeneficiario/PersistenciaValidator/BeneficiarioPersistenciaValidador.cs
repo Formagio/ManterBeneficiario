@@ -41,10 +41,8 @@ namespace ManterBeneficiario.PersistenciaValidator
 
         private bool ExisteBeneficiario(long beneficiarioIdentificador)
         {
-            var beneficiarioIndex = _beneficiarios.FindIndex(b =>
+            return _beneficiarios.Any(b =>
                 b.Identificador == beneficiarioIdentificador);
-
-            return beneficiarioIndex >= 0;
         }
 
         private bool ExisteBeneficiario(long beneficiarioIdentificador, 
