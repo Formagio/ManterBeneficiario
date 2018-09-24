@@ -14,10 +14,10 @@ namespace ManterBeneficiario.Model
 
         public void ValidarModel()
         {
-            if (!string.IsNullOrEmpty(NomeCompleto) ||
-                !string.IsNullOrEmpty(Cpf) ||
-                !string.IsNullOrEmpty(Rg) ||
-                !string.IsNullOrEmpty(Telefone))
+            if (string.IsNullOrEmpty(NomeCompleto) ||
+                string.IsNullOrEmpty(Cpf) ||
+                string.IsNullOrEmpty(Rg) ||
+                string.IsNullOrEmpty(Telefone))
             {
                 throw new BeneficiarioInvalidoException();
             }

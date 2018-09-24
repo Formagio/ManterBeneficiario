@@ -16,10 +16,8 @@ namespace ManterBeneficiario.PersistenciaValidator
 
         public void ValidarAoAdicionar(BeneficiarioModel beneficiarioModel)
         {
-            if (_beneficiarios.Any(b =>
-                b.Identificador == beneficiarioModel.Identificador ||
-                b.Cpf == beneficiarioModel.Cpf ||
-                b.Rg == beneficiarioModel.Rg))
+            if (ExisteBeneficiario(beneficiarioModel.Identificador, 
+                beneficiarioModel.Cpf, beneficiarioModel.Rg))
             {
                 throw new BeneficiarioJaExistenteException();
             }
@@ -27,7 +25,7 @@ namespace ManterBeneficiario.PersistenciaValidator
 
         public void ValidarAoEditar(BeneficiarioModel beneficiarioModel)
         {
-            if (!ExisteBeneficiarioIdentificador(beneficiarioModel.Identificador))
+            if (!ExisteBeneficiario(beneficiarioModel.Identificador))
             {
                 throw new BeneficiarioNaoEncontradoException();
             }
@@ -35,18 +33,27 @@ namespace ManterBeneficiario.PersistenciaValidator
 
         public void ValidarAoRemover(long beneficiarioIdentificador)
         {            
-            if (!ExisteBeneficiarioIdentificador(beneficiarioIdentificador))
+            if (!ExisteBeneficiario(beneficiarioIdentificador))
             {
                 throw new BeneficiarioNaoEncontradoException();
             }
         }
 
-        private bool ExisteBeneficiarioIdentificador(long beneficiarioIdentificador)
+        private bool ExisteBeneficiario(long beneficiarioIdentificador)
         {
             var beneficiarioIndex = _beneficiarios.FindIndex(b =>
                 b.Identificador == beneficiarioIdentificador);
 
             return beneficiarioIndex >= 0;
+        }
+
+        private bool ExisteBeneficiario(long beneficiarioIdentificador, 
+            string beneficiarioCpf, string beneficiarioRg)
+        {
+            return _beneficiarios.Any(b =>
+                b.Identificador == beneficiarioIdentificador ||
+                b.Cpf == beneficiarioCpf ||
+                b.Rg == beneficiarioRg);
         }
     }
 }
