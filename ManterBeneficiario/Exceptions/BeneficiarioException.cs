@@ -1,7 +1,9 @@
-﻿using System;
-
-namespace ManterBeneficiario.Exception
+﻿namespace ManterBeneficiario.Exception
 {
+    public class BeneficiarioInvalidoException : System.Exception
+    {
+    }
+
     public class BeneficiarioJaExistenteException : System.Exception
     {
     }

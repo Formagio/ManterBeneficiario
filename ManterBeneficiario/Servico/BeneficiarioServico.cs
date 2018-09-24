@@ -16,24 +16,22 @@ namespace ManterBeneficiario.Servico
 
         public void AdicionarBeneficiario(BeneficiarioModel beneficiario)
         {
-            try
+            if (!beneficiario.EhValido())
             {
-                _beneficiarioPersistencia.AdicionarBeneficiario(beneficiario);
+                throw new BeneficiarioInvalidoException();
             }
-            catch (BeneficiarioJaExistenteException)
-            {
-            }
+               
+            _beneficiarioPersistencia.AdicionarBeneficiario(beneficiario);
         }
 
         public void EditarBeneficiario(BeneficiarioModel beneficiario)
         {
-            try
+            if (!beneficiario.EhValido())
             {
-                _beneficiarioPersistencia.EditarBeneficiario(beneficiario);
+                throw new BeneficiarioInvalidoException();
             }
-            catch (BeneficiarioNaoEncontradoException)
-            {
-            }
+            
+            _beneficiarioPersistencia.EditarBeneficiario(beneficiario);
         }
 
         public List<BeneficiarioModel> ListarBeneficiariosAtivos()
@@ -43,13 +41,7 @@ namespace ManterBeneficiario.Servico
 
         public void RemoverBeneficiario(long numeroBeneficiario)
         {
-            try
-            {
-                _beneficiarioPersistencia.RemoverBeneficiario(numeroBeneficiario);
-            }
-            catch (BeneficiarioNaoEncontradoException)
-            {
-            }
+            _beneficiarioPersistencia.RemoverBeneficiario(numeroBeneficiario);
         }
     }
 }

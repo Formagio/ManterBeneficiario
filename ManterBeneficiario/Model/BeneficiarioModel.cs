@@ -9,5 +9,14 @@
         public string NumeroTelefone { get; set; }
         public long NumeroBeneficiario { get; set; }
         public bool EstaRemovido { get; set; }
+
+        public bool EhValido()
+        {
+            return
+                !string.IsNullOrEmpty(NomeCompleto) ||
+                !string.IsNullOrEmpty(Cpf) ||
+                !string.IsNullOrEmpty(Rg) ||
+                !string.IsNullOrEmpty(NumeroTelefone);
+        }
     }
 }

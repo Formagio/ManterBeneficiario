@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PersistenciaValidator\BeneficiarioPersistenciaValidador.cs" />
     <Compile Include="Servico\BeneficiarioServico.cs" />
     <Compile Include="Builder\BeneficiarioBuilder.cs" />
     <Compile Include="Controller\BeneficiarioController.cs" />
