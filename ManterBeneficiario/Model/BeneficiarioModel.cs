@@ -1,4 +1,6 @@
-﻿namespace ManterBeneficiario.Model
+﻿using ManterBeneficiario.Exception;
+
+namespace ManterBeneficiario.Model
 {
     public class BeneficiarioModel
     {
@@ -10,13 +12,15 @@
         public string Telefone { get; set; }        
         public bool EstaRemovido { get; set; }
 
-        public bool EhValido()
+        public void ValidarModel()
         {
-            return
-                !string.IsNullOrEmpty(NomeCompleto) ||
+            if (!string.IsNullOrEmpty(NomeCompleto) ||
                 !string.IsNullOrEmpty(Cpf) ||
                 !string.IsNullOrEmpty(Rg) ||
-                !string.IsNullOrEmpty(Telefone);
+                !string.IsNullOrEmpty(Telefone))
+            {
+                throw new BeneficiarioInvalidoException();
+            }
         }
     }
 }

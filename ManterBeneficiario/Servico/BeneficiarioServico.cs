@@ -1,5 +1,4 @@
-﻿using ManterBeneficiario.Exception;
-using ManterBeneficiario.Model;
+﻿using ManterBeneficiario.Model;
 using ManterBeneficiario.Persistencia;
 using System.Collections.Generic;
 
@@ -16,21 +15,13 @@ namespace ManterBeneficiario.Servico
 
         public void AdicionarBeneficiario(BeneficiarioModel beneficiario)
         {
-            if (!beneficiario.EhValido())
-            {
-                throw new BeneficiarioInvalidoException();
-            }
-               
+            beneficiario.ValidarModel();               
             _beneficiarioPersistencia.AdicionarBeneficiario(beneficiario);
         }
 
         public void EditarBeneficiario(BeneficiarioModel beneficiario)
         {
-            if (!beneficiario.EhValido())
-            {
-                throw new BeneficiarioInvalidoException();
-            }
-            
+            beneficiario.ValidarModel();
             _beneficiarioPersistencia.EditarBeneficiario(beneficiario);
         }
 
